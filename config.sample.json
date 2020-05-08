@@ -1,0 +1,11 @@
+{
+  "prefix": "!",
+  "token": "<your discord token>",
+  "userId": "<your bot user id>",
+  "lavalink": {
+    "host": "localhost",
+    "password": "",
+    "port": "2333"
+  },
+  "logToFile": true
+}
