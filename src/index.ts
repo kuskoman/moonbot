@@ -47,6 +47,8 @@ client.on("message", async (msg) => {
     return;
   }
   await player.join(channel.id);
+  const res = await voice.load("ytsearch:dj hazel wez pigulke");
+  await player.play(res.tracks[0]);
 });
 
 const getShardId = (guildId: string, numberOfshards: number) => {
