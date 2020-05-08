@@ -1,4 +1,3 @@
-import "./cfgCheck";
 import { Client } from "discord.js";
 import { Node } from "lavalink";
 import config from "./config";
