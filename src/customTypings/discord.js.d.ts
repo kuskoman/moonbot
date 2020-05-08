@@ -1,4 +1,4 @@
-import { VoiceServerUpdate } from "lavalink";
+import { VoiceServerUpdate, VoiceStateUpdate } from "lavalink";
 
 declare module "discord.js" {
   interface ClientEvents {
@@ -9,5 +9,7 @@ declare module "discord.js" {
 
 interface Raw {
   t: string;
-  d: VoiceServerUpdate;
+  d: StateUpdate;
 }
+
+interface StateUpdate extends VoiceServerUpdate, VoiceStateUpdate {}
