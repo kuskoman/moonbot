@@ -6,9 +6,9 @@ import { getShardId } from "./utils/shardUtils";
 
 const client = new Client();
 const voice = new Node({
-  host: `${config.lavalink.host}:${config.lavalink.port}`,
+  host: `${config.lavalinkHost}:${config.lavalinkPort}`,
   userID: config.userId as string,
-  password: config.lavalink.password,
+  password: config.lavalinkPassword,
   send(guildId, packet) {
     const numberOfshards = client.ws.shards.keyArray().length;
     const shardId = getShardId(guildId, numberOfshards);

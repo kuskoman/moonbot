@@ -4,11 +4,9 @@ import chalk from "chalk";
 
 const defaultConfig = {
   prefix: "?",
-  lavalink: {
-    host: "localhost",
-    password: "",
-    port: "2333",
-  },
+  lavalinkHost: "localhost",
+  lavalinkPassword: "",
+  lavalinkPort: "2333",
   logToFile: true,
 };
 
@@ -46,7 +44,7 @@ export const getConfig = () => {
 const warnAbout = (k: string, v: any): void => {
   console.warn(
     chalk.yellow(
-      `Property ${k} not found in configuration file. Using default ${v} instead`
+      `Property ${k} not found in configuration file. Using default '${v}' instead`
     )
   );
 };
