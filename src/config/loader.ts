@@ -1,6 +1,7 @@
 import { readFileSync, existsSync } from "fs";
 import { UserConfig } from "./config.interfaces";
 import chalk from "chalk";
+import { Indexable } from "src/utils/objectUtils";
 
 const defaultConfig = {
   prefix: "?",
@@ -32,16 +33,22 @@ const readConfigFile = (): UserConfig => {
 
 export const getConfig = () => {
   const userConfig = readConfigFile();
-  const userKeys = Object.keys(userConfig);
-  for (let [key, value] of Object.entries(defaultConfig)) {
-    if (!(key in userKeys)) {
-      warnAbout(key, value);
+  const mergedConfig = {
+    ...defaultConfig,
+    ...userConfig,
+  };
+
+  for (let [key, value] of Object.entries(mergedConfig)) {
+    const usrCfg = userConfig as Indexable;
+    if (typeof usrCfg[key] === "undefined") {
+      warnAboutDefault(key, value);
     }
   }
-  return { ...defaultConfig, ...userConfig };
+
+  return mergedConfig;
 };
 
-const warnAbout = (k: string, v: any): void => {
+const warnAboutDefault = (k: string, v: any): void => {
   console.warn(
     chalk.yellow(
       `Property ${k} not found in configuration file. Using default '${v}' instead`
