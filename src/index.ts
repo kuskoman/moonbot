@@ -9,9 +9,14 @@ const voice = new Node({
   host: `${config.lavalink.host}:${config.lavalink.port}`,
   userID: config.userId as string,
   password: config.lavalink.password,
-  send(guildID, packet) {
-    if (guildID in client.guilds) return client.ws.emit(packet);
-    throw new Error("attempted to send a packet on the wrong shard");
+  send(guildId, packet) {
+    const numberOfshards = client.ws.shards.keyArray().length;
+    const shardId = getShardId(guildId, numberOfshards);
+    const shard = client.ws.shards.get(shardId);
+    if (!shard) {
+      return console.log("Shard not found");
+    }
+    shard.send(packet);
   },
 });
 
@@ -27,5 +32,25 @@ client.on("ready", () => {
   console.log(chalk.green(`Bot logged in as ${client.user?.tag}`));
   console.log(chalk.green(`Bot prefix is set to "${config.prefix}"`));
 });
+
+client.on("message", async (msg) => {
+  if (msg.content !== "%join") {
+    return;
+  }
+  const guild = msg.member?.guild;
+  if (!guild) {
+    return;
+  }
+  const player = voice.players.get(guild.id);
+  const channel = msg.member?.voice.channel;
+  if (!channel) {
+    return;
+  }
+  await player.join(channel.id);
+});
+
+const getShardId = (guildId: string, numberOfshards: number) => {
+  return (Number(guildId) >>> 22) % numberOfshards;
+};
 
 client.login(config.token);
