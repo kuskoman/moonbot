@@ -7,7 +7,7 @@ import chalk from "chalk";
 const client = new Client();
 const voice = new Node({
   host: `${config.lavalink.host}:${config.lavalink.port}`,
-  userID: "",
+  userID: config.userId as string,
   password: config.lavalink.password,
   send(guildID, packet) {
     if (guildID in client.guilds) return client.ws.emit(packet);

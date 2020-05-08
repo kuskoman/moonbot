@@ -6,6 +6,15 @@ if (!process.env.DISCORD_TOKEN) {
   process.exit(1);
 }
 
+if (!process.env.DISCORD_ID) {
+  console.log(
+    chalk.red(
+      "DISCORD_ID is not specified but is neccessary for Lavalink to work. exiting program."
+    )
+  );
+  process.exit(1);
+}
+
 if (!process.env.LAVALINK_PASSWORD) {
   console.log(
     chalk.yellow("LAVALINK_PASSWORD not specified. Using empty string instead.")
