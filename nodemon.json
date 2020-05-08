@@ -1,0 +1,6 @@
+{
+  "ignore": ["**/*.test.ts", "**/*.spec.ts"],
+  "watch": ["src", ".env"],
+  "exec": "yarn typescript",
+  "ext": "ts"
+}
