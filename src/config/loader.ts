@@ -25,5 +25,15 @@ const readConfigFile = (): UserConfig => {
 
 export const getConfig = () => {
   const userConfig = readConfigFile();
+  const userKeys = Object.keys(userConfig);
+  for (let [key, value] of Object.entries(defaultConfig)) {
+    if (!(key in userKeys)) {
+      console.log(
+        chalk.yellow(
+          `Property ${key} not found in configuration file. Using default ${value} instead`
+        )
+      );
+    }
+  }
   return { ...defaultConfig, ...userConfig };
 };
