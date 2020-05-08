@@ -1,0 +1,9 @@
+{
+  "name": "moonbot",
+  "version": "0.0.1",
+  "description": "Just another another Discord bot but with cool name",
+  "main": "dist/index.js",
+  "repository": "git@github.com:kuskoman/moonbot.git",
+  "author": "kkm <kubasurdej@gmail.com>",
+  "license": "MIT"
+}
