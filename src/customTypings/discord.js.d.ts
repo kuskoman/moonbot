@@ -1,7 +1,13 @@
-import { ClientEvents } from "discord.js";
+import { VoiceServerUpdate } from "lavalink";
 
 declare module "discord.js" {
-  interface ClientEvents extends ClientEvents {
-    raw: unknown;
+  interface ClientEvents {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    raw: [Raw];
   }
+}
+
+interface Raw {
+  t: string;
+  d: VoiceServerUpdate;
 }
