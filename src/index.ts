@@ -3,6 +3,7 @@ import { Client } from "discord.js";
 import { Node } from "lavalink";
 import config from "./config";
 import chalk from "chalk";
+import { getShardId } from "./utils/shardUtils";
 
 const client = new Client();
 const voice = new Node({
@@ -50,9 +51,5 @@ client.on("message", async (msg) => {
   const res = await voice.load("ytsearch:dj hazel wez pigulke");
   await player.play(res.tracks[0]);
 });
-
-const getShardId = (guildId: string, numberOfshards: number) => {
-  return (Number(guildId) >>> 22) % numberOfshards;
-};
 
 client.login(config.token);
