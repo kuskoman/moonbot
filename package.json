@@ -29,6 +29,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "discord.js": "12.2.0",
-    "lavalink": "^2.10.0"
+    "lavalink": "^2.10.0",
+    "winston": "^3.2.1"
   }
 }

@@ -18,6 +18,6 @@ export const validate = (config: ConfigToValidate): void => {
 };
 
 const panicLog = (s: string) => {
-  console.log(chalk.red(s));
+  console.error(chalk.red(s));
   process.exit(1);
 };

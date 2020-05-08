@@ -7,6 +7,7 @@ export interface UserConfig {
     password?: string;
     port?: string;
   };
+  logToFile?: boolean;
 }
 
 export interface Config {
@@ -18,4 +19,5 @@ export interface Config {
     password: string;
     port: string;
   };
+  logToFile: boolean;
 }

@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from "fs";
-import chalk from "chalk";
 import { UserConfig } from "./config.interfaces";
+import chalk from "chalk";
 
 const defaultConfig = {
   prefix: "?",
@@ -9,13 +9,16 @@ const defaultConfig = {
     password: "",
     port: "2333",
   },
+  logToFile: true,
 };
 
 const readConfigFile = (): UserConfig => {
   const path = "config.json";
   const fileExists = existsSync(path);
   if (!fileExists) {
-    console.log(chalk.red("Can't find config.json file. Exiting application."));
+    console.error(
+      chalk.red("Can't find config.json file. Exiting application.")
+    );
     process.exit(1);
   }
   let parsedConfig: UserConfig;
@@ -23,7 +26,7 @@ const readConfigFile = (): UserConfig => {
     const configFile = readFileSync(path, "utf-8");
     parsedConfig = JSON.parse(configFile);
   } catch (_e) {
-    console.log("error when parsing file");
+    console.error(chalk.red("Error when parsing configuration file."));
     process.exit(1);
   }
   return parsedConfig;
@@ -34,10 +37,8 @@ export const getConfig = () => {
   const userKeys = Object.keys(userConfig);
   for (let [key, value] of Object.entries(defaultConfig)) {
     if (!(key in userKeys)) {
-      console.log(
-        chalk.yellow(
-          `Property ${key} not found in configuration file. Using default ${value} instead`
-        )
+      console.warn(
+        `Property ${key} not found in configuration file. Using default ${value} instead`
       );
     }
   }
