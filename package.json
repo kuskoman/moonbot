@@ -6,6 +6,12 @@
   "repository": "git@github.com:kuskoman/moonbot.git",
   "author": "kkm <kubasurdej@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon -x ts-node src/index.ts",
+    "start": "ts-node src/index.ts",
+    "test": "jest"
+  },
   "devDependencies": {
     "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
