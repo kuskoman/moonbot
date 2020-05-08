@@ -12,15 +12,21 @@ const defaultConfig = {
 };
 
 const readConfigFile = (): UserConfig => {
-  const path = "../config.json";
+  const path = "config.json";
   const fileExists = existsSync(path);
   if (!fileExists) {
     console.log(chalk.red("Can't find config.json file. Exiting application."));
     process.exit(1);
   }
-  const configFile = readFileSync(path, "utf-8");
-  const configJson = JSON.parse(configFile);
-  return configJson;
+  let parsedConfig: UserConfig;
+  try {
+    const configFile = readFileSync(path, "utf-8");
+    parsedConfig = JSON.parse(configFile);
+  } catch (_e) {
+    console.log("error when parsing file");
+    process.exit(1);
+  }
+  return parsedConfig;
 };
 
 export const getConfig = () => {
