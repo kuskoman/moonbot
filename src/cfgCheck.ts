@@ -6,12 +6,6 @@ if (!process.env.DISCORD_TOKEN) {
   process.exit(1);
 }
 
-if (!process.env.PREFIX) {
-  console.log(chalk.blue("PREFIX not specified. Using '?' instead."));
-} else {
-  console.log(chalk.blue(`Prefix set to '${process.env.PREFIX}'`));
-}
-
 if (!process.env.LAVALINK_PASSWORD) {
   console.log(
     chalk.yellow("LAVALINK_PASSWORD not specified. Using empty string instead.")
