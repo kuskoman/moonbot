@@ -37,10 +37,16 @@ export const getConfig = () => {
   const userKeys = Object.keys(userConfig);
   for (let [key, value] of Object.entries(defaultConfig)) {
     if (!(key in userKeys)) {
-      console.warn(
-        `Property ${key} not found in configuration file. Using default ${value} instead`
-      );
+      warnAbout(key, value);
     }
   }
   return { ...defaultConfig, ...userConfig };
+};
+
+const warnAbout = (k: string, v: any): void => {
+  console.warn(
+    chalk.yellow(
+      `Property ${k} not found in configuration file. Using default ${v} instead`
+    )
+  );
 };
