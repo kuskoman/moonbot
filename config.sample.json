@@ -5,5 +5,7 @@
   "lavalinkHost": "localhost",
   "lavalinkPassword": "",
   "lavalinkPort": "2333",
-  "logToFile": true
+  "logToFile": true,
+  "logToConsole": true,
+  "interactiveConsole": false
 }

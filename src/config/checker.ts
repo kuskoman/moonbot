@@ -15,6 +15,10 @@ export const validate = (config: ConfigToValidate): void => {
       "Discord Bot ID is missing. Add userId property to configuration file. Exiting application."
     );
   }
+
+  if (!(config.logToConsole || config.logToFile)) {
+    panicLog("You have to either log to console or to file");
+  }
 };
 
 const panicLog = (s: string) => {

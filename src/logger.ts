@@ -3,8 +3,11 @@ import config from "./config";
 
 const logger = createLogger({
   level: "debug",
-  transports: [new transports.Console({ format: format.cli() })],
 });
+
+if (config.logToConsole) {
+  logger.add(new transports.Console({ format: format.cli() }));
+}
 
 if (config.logToFile) {
   const filename = `log/${+new Date()}.log`;

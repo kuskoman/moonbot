@@ -9,6 +9,8 @@ const defaultConfig = {
   lavalinkPassword: "",
   lavalinkPort: "2333",
   logToFile: true,
+  logToConsole: true,
+  interactiveConsole: false,
 };
 
 const readConfigFile = (): UserConfig => {

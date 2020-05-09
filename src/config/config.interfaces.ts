@@ -6,6 +6,8 @@ export interface UserConfig {
   lavalinkPassword?: string;
   lavalinkPort?: string;
   logToFile?: boolean;
+  logToConsole?: boolean;
+  interactiveConsole?: boolean;
 }
 
 export interface Config {
@@ -16,4 +18,6 @@ export interface Config {
   lavalinkPassword: string;
   lavalinkPort: string;
   logToFile: boolean;
+  logToConsole: boolean;
+  interactiveConsole: boolean;
 }
