@@ -2,6 +2,7 @@ import { Client } from "discord.js";
 import { voice } from "./modules/voice";
 import config from "./config";
 import logger from "./logger";
+import { handleCommand } from "./handlers/command";
 
 export const client = new Client();
 
@@ -19,19 +20,5 @@ client.on("ready", () => {
 });
 
 client.on("message", async (msg) => {
-  if (msg.content !== "%join") {
-    return;
-  }
-  const guild = msg.member?.guild;
-  if (!guild) {
-    return;
-  }
-  const player = voice.players.get(guild.id);
-  const channel = msg.member?.voice.channel;
-  if (!channel) {
-    return;
-  }
-  await player.join(channel.id);
-  const res = await voice.load("ytsearch:dj hazel wez pigulke");
-  await player.play(res.tracks[0]);
+  handleCommand(msg);
 });
