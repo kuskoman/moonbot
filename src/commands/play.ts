@@ -1,7 +1,6 @@
 import { Command } from "../types/command.interfaces";
 import { voice } from "../modules/voice";
 import { findSongOnYouTube } from "../utils/voiceUtils";
-import { joinChannel } from "src/utils/discordUtils";
 
 const play: Command = {
   name: "play",
@@ -15,10 +14,9 @@ const play: Command = {
       return msg.channel.send("Cannot find server to play song on");
     }
 
-    if (!(await joinChannel(msg))) return;
-
     const song = await findSongOnYouTube(args);
     const player = voice.players.get(msg.guild.id);
+    await player.join(msg.channel.id);
     player.play(song);
   },
 };
