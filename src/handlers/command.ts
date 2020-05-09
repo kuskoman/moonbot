@@ -1,7 +1,7 @@
 import { Msg } from "../types/general.interfaces";
 import { Command } from "../types/command.interfaces";
 import config from "../config";
-import logger from "../logger";
+import logger from "../modules/logger";
 
 const commands: Map<string, Command> = new Map();
 

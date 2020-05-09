@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
 import { voice } from "./modules/voice";
 import config from "./config";
-import logger from "./logger";
+import logger from "./modules/logger";
 import { handleCommand } from "./handlers/command";
 
 export const client = new Client();
