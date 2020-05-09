@@ -14,9 +14,14 @@ const play: Command = {
       return msg.channel.send("Cannot find server to play song on");
     }
 
+    const voiceChannel = msg.member?.voice.channel;
+    if (!voiceChannel) {
+      return msg.channel.send("You are not in a voice channel");
+    }
+
     const song = await findSongOnYouTube(args);
     const player = voice.players.get(msg.guild.id);
-    await player.join(msg.channel.id);
+    await player.join(voiceChannel.id);
     player.play(song);
   },
 };
