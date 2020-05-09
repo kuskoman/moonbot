@@ -15,14 +15,14 @@ export const handleCommand = async (msg: Msg): Promise<void> => {
   if (!(content && content.startsWith(config.prefix))) return;
 
   const commandPattern = extractCommand(msg);
-  const _commandArgs = extractArgs(msg);
+  const commandArgs = extractArgs(msg);
 
   if (!commandPattern) return;
 
   const command = commands.get(commandPattern);
   if (!command) return;
 
-  command.execute(msg);
+  command.execute({ msg, command: commandPattern, args: commandArgs });
 };
 
 const extractCommand = (msg: Msg) => {
