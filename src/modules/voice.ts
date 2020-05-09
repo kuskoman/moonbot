@@ -1,7 +1,7 @@
 import { Node } from "lavalink";
-import config from "./config";
-import { client } from "./client";
-import { getShardId } from "./utils/shardUtils";
+import config from "../config";
+import { client } from "../client";
+import { getShardId } from "../utils/shardUtils";
 
 export const voice = new Node({
   host: `${config.lavalinkHost}:${config.lavalinkPort}`,

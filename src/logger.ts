@@ -14,6 +14,4 @@ if (config.logToFile) {
   logger.add(new transports.File({ filename, format: format.simple() }));
 }
 
-logger.info("Logger loaded");
-
 export default logger;

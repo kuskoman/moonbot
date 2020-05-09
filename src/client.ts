@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import { voice } from "./voice";
+import { voice } from "./modules/voice";
 import config from "./config";
 import logger from "./logger";
 
