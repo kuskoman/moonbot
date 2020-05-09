@@ -6,3 +6,10 @@ export interface Command {
   patterns: string[];
   execute(msg: Msg): any;
 }
+
+export interface ConsoleCommand {
+  name: string;
+  description?: string;
+  patterns: string[];
+  execute(s: string): any;
+}

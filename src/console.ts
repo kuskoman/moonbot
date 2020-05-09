@@ -6,8 +6,9 @@ export class InteractiveConsole {
   }
 
   public start() {
-    this.inStream.on("data", (data) => {
-      console.log(data);
+    this.inStream.on("data", (buff) => {
+      const str = buff.toString();
+      console.log(str); // todo: allow to use console in some way
     });
   }
 }
