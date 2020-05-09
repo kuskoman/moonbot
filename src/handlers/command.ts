@@ -1,6 +1,7 @@
 import { Msg } from "../types/general.interfaces";
 import { Command } from "../types/command.interfaces";
 import config from "../config";
+import logger from "../logger";
 
 const commands: Map<string, Command> = new Map();
 
@@ -10,17 +11,25 @@ export const loadCommand = (command: Command): void => {
   });
 };
 
-export const handleCommand = async (msg: Msg): Promise<void> => {
+export const handleCommand = async (msg: Msg): Promise<any> => {
   const content = msg.content;
   if (!(content && content.startsWith(config.prefix))) return;
 
   const commandPattern = extractCommand(msg);
   const commandArgs = extractArgs(msg);
 
-  if (!commandPattern) return;
+  if (!commandPattern) {
+    return logger.debug("Command pattern not found");
+  }
 
   const command = commands.get(commandPattern);
-  if (!command) return;
+  if (!command) {
+    return logger.debug("Command not found");
+  }
+
+  logger.debug(
+    `"${msg.content}" recognised as command. Executing using ${command.name}`
+  );
 
   command.execute({ msg, command: commandPattern, args: commandArgs });
 };
