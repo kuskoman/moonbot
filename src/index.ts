@@ -3,4 +3,6 @@ import config from "./config";
 import console from "./console";
 
 client.login(config.token);
-console.start();
+if (config.interactiveConsole) {
+  console.start();
+}
