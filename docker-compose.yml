@@ -4,3 +4,8 @@ services:
     build: ./lavalink
     ports:
       - "2333:2333"
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "2334:6379"
