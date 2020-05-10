@@ -15,7 +15,8 @@ const skip: Command = {
     }
 
     const queue = voice.queues.get(msg.guild.id);
-    queue.next();
+    await queue.next();
+    msg.channel.send("Song skipped");
   },
 };
 
