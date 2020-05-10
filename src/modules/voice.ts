@@ -1,4 +1,4 @@
-import { Node } from "lavalink";
+import { Client as Node } from "lavaqueue";
 import config from "../config";
 import { client } from "../client";
 import { getShardId } from "../utils/shardUtils";
