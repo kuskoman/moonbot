@@ -27,10 +27,18 @@ const play: Command = {
       return msg.channel.send(`Song **${song.info.title}** added to queue`);
     }
 
-    msg.channel.send(`Playing **${song.info.title}**`);
+    const current = await queue.current();
+    if (!current) {
+      msg.channel.send(`Playing **${song.info.title}**`);
+    } else {
+      msg.channel.send(
+        `Resumed player and added **${song.info.title}** to queue`
+      );
+    }
+
     await queue.player.join(voiceChannel.id);
     await queue.add(song.track);
-    await queue.start();
+    queue.start();
   },
 };
 
