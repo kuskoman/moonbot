@@ -20,10 +20,14 @@ const play: Command = {
     }
 
     const song = await findSongOnYouTube(args);
-    msg.channel.send(
-      `Song ${song.info.title} added to queue, or playing, idk yet #todo fix it`
-    );
     const queue = voice.queues.get(msg.guild.id);
+    await queue.add(song.track);
+
+    if (queue.player.playing) {
+      return msg.channel.send(`Song **${song.info.title}** added to queue`);
+    }
+
+    msg.channel.send(`Playing **${song.info.title}**`);
     await queue.player.join(voiceChannel.id);
     await queue.add(song.track);
     await queue.start();
