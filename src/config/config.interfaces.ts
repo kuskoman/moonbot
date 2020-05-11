@@ -4,9 +4,11 @@ export interface UserConfig {
   userId?: string;
   lavalinkHost?: string;
   lavalinkPassword?: string;
-  lavalinkPort?: string;
+  lavalinkPort?: string | number;
   logToFile?: boolean;
   logToConsole?: boolean;
+  redisHost?: string;
+  redisPort?: string | number;
 }
 
 export interface Config {
@@ -15,7 +17,9 @@ export interface Config {
   userId: string;
   lavalinkHost: string;
   lavalinkPassword: string;
-  lavalinkPort: string;
+  lavalinkPort: string | number;
   logToFile: boolean;
   logToConsole: boolean;
+  redisHost: string;
+  redisPort: string | number;
 }

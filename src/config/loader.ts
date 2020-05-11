@@ -11,6 +11,8 @@ const defaultConfig = {
   logToFile: true,
   logToConsole: true,
   interactiveConsole: false,
+  redisHost: "localhost",
+  redisPort: "2334",
 };
 
 const readConfigFile = (): UserConfig => {

@@ -8,7 +8,7 @@ export const voice = new Node({
   userID: config.userId as string,
   password: config.lavalinkPassword,
   hosts: {
-    redis: "redis://localhost:2334",
+    redis: `redis://${config.redisHost}:${config.redisPort}`,
   },
   send(guildId, packet) {
     const numberOfshards = client.ws.shards.keyArray().length;
