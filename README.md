@@ -92,3 +92,17 @@ After bot is built you can run bot using:
 ```shell
 node dist/
 ```
+
+## Contributing
+
+Feel free to contribute to the bot by reporting bugs, requesting features, solving issues, or using it.
+If you have any problem with using or developing the bot feel free to create an issue with a question.
+
+## Special thanks
+
+Thanks to authors of
+
+- [Discord.js](https://github.com/discordjs/discord.js/)
+- [Lavalink](https://github.com/Frederikam/Lavalink)
+- [Lavalink wrapper for Node.js](https://github.com/lavalibs/lavalink.js)
+- [Lavaqueue](https://github.com/lavalibs/lavaqueue)
