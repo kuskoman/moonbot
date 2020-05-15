@@ -10,9 +10,9 @@ const leave: Command = {
     }
 
     const queue = voice.queues.get(msg.guild.id);
-    await queue.stop();
-    await queue.player.stop();
+    await queue.clear();
     await queue.player.leave();
+    await queue.player.destroy();
   },
 };
 
