@@ -1,9 +1,11 @@
 version: "3"
 services:
   lavalink:
-    build: ./lavalink
+    image: fredboat/lavalink:master-v3
     ports:
       - "2333:2333"
+    volumes:
+      - "./lavalink/application.yml:/opt/Lavalink/application.yml"
   redis:
     image: redis
     restart: always
